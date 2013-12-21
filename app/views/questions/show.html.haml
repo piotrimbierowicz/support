@@ -1,0 +1,17 @@
+.container
+  = render :partial => 'projects/common/head'
+  = render :partial => 'layouts/notifications'
+  %p
+    = link_to 'Powrót do listy', questions_project_path(@project), :class => 'btn btn-default'
+  .panel.panel-info
+    .panel-heading
+      %h5{:style=>'margin-top:5px; margin-bottom:5px'}
+        = "##{@question.id}"
+        = @question.name
+      .clearfix
+    .panel-body
+      = @question.description.html_safe
+  = render :partial => 'questions/answer/list', :locals => {answers: @question.answers}
+  %hr
+  %h3 Dodaj nową odpowiedź
+  = render :partial => 'questions/answer/form'

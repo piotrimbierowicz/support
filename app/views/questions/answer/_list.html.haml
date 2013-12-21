@@ -1,0 +1,10 @@
+- for answer in answers
+  .panel.panel-default
+    .panel-heading
+      Odpowiedź użytkownika
+      %strong= answer.author.display_name
+      .pull-right= answer.created_at.strftime('%A, %e %B %Y, %H:%m')
+      .clearfix
+
+    .panel-body
+      = answer.content.html_safe

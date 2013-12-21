@@ -1,0 +1,32 @@
+.container
+  .row
+    .col-lg-12
+      = render :partial => 'layouts/notifications'
+      %h3
+        Ustawienia konta
+      %hr
+      .row
+        .col-md-6
+          %h3 Edytuj dane
+          = form_for @user, :url => update_profile_path do |f|
+            .form-horizontal
+              .form-group
+                = f.label :email, :class => 'control-label col-sm-4'
+                .col-sm-8
+                  = f.email_field :email, :class => 'form-control'
+              .form-group
+                = f.label :password, :class => 'control-label col-sm-4'
+                .col-sm-8
+                  = f.password_field :password, :class => 'form-control'
+              .form-group
+                = f.label :password_confirmation, :class => 'control-label col-sm-4'
+                .col-sm-8
+                  = f.password_field :password_confirmation, :class => 'form-control'
+              .form-group
+                = f.label :display_name, :class => 'control-label col-sm-4'
+                .col-sm-8
+                  = f.text_field :display_name, :class => 'form-control'
+
+              .form-group
+                .col-sm-8.col-sm-offset-4
+                  = f.submit 'Zapisz', :class => 'btn btn-success'

@@ -1,0 +1,7 @@
+.container
+  = render :partial => 'projects/common/head'
+  = render :partial => 'layouts/notifications'
+  - if [User::Administrator, User::Developer].include?(current_user.role)
+    %p
+      = link_to 'Dodaj pytanie', new_question_project_path(@project), :class => 'btn btn-success'
+  = render :partial => 'projects/questions/list', :locals => {questions: @project.questions}

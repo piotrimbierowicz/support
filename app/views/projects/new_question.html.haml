@@ -1,0 +1,4 @@
+.container
+  = render :partial => 'projects/common/head'
+  %h2 Dodaj nowe pytanie
+  = render :partial => 'projects/questions/form', :locals => {questions: @project.questions}

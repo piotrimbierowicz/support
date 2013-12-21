@@ -1,0 +1,10 @@
+.masthead
+  %h3.text-muted= @project.name
+  %ul.nav.nav-justified
+    %li{:class => is_project_tab_active? ? 'active' : ''}
+      = link_to 'Projekt', project_path(@project)
+    %li{:class => is_questions_tab_active? ? 'active' : ''}
+      = link_to 'Pytania i odpowiedzi', questions_project_path(@project)
+    %li{:class => is_tasks_tab_active? ? 'active' : ''}
+      %a.disabled{:href=>'#', :style=>'color: #bfbfbf; cursor: default'} Zadania
+%br

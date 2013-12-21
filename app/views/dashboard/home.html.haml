@@ -1,0 +1,10 @@
+.container
+  .row
+    .col-lg-6.col-lg-offset-3
+      %h2 Wybierz projekt
+      .list-group
+        - for project in @projects
+          = link_to project.name, project_path(project), :class=>'list-group-item'
+      - if current_user.role == User::Administrator
+        .btn-group-vertical{:style=>'display:block'}
+          = link_to 'Nowy projekt', new_project_path, :class=>'btn btn-default btn-block'

@@ -1,0 +1,7 @@
+= form_for @answer do |f|
+  = f.hidden_field :question_id
+  .form-group
+    = f.label :content, :class => 'control-label'
+    = f.cktext_area :content, :class => 'form-control'
+  .form-group
+    = f.submit 'Wyślij', :class => 'btn btn-success'

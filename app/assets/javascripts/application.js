@@ -13,3 +13,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require '../../../vendor/assets/javascripts/dropdown.js'
+//= require ckeditor/init
+
+CKEDITOR.config.toolbarGroups = [
+//    { name: 'document',    groups: [  'doctools' ] },
+    // { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+    // { name: 'forms' },
+    // { name: 'links' },
+    // { name: 'insert' },
+    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+    { name: 'styles' },
+    { name: 'colors' },
+    { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
+    { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+//    { name: 'tools' },
+//    { name: 'others' },
+    // { name: 'about' }
+];

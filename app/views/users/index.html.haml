@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-lg-12
+      %h2 Użytkownicy
+      %p
+        = link_to 'Dodaj nowego', new_user_path, :class => 'btn btn-success'
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Nazwa wyświetlana
+            %th E-mail
+            %th Aktywność
+            %th Rola
+        %thead
+          - for user in @users
+            %tr
+              %td= link_to user.display_name, user_path(user)
+              %td= user.email
+              %td
+                Pytania:
+                = "#{user.questions.size},"
+                Odpowiedzi:
+                = user.answers.size
+              %td
+                %span.label.label-primary= user.role
+
+

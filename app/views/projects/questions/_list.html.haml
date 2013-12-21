@@ -1,0 +1,14 @@
+- for question in questions
+  .panel.panel-info
+    .panel-heading
+      .pull-right
+        = link_to "#{question.answers.size} odpowiedzi", question_path(question), :class => 'btn btn-primary btn-sm'
+        - if current_user.role == User::Administrator
+          = link_to "Usuń", question_path(question), :method => 'delete', :class => 'btn btn-danger btn-sm', :confirm => 'Jesteś pewien?'
+      %h5{:style=>'margin-top:7px; margin-bottom:0'}
+        %a{:href=>question_path(question)}
+          = "##{question.id}"
+          = question.name
+      .clearfix
+    .panel-body
+      = truncate(strip_tags(question.description))
