@@ -7,4 +7,6 @@
       = link_to 'Pytania i odpowiedzi', questions_project_path(@project)
     %li{:class => is_tasks_tab_active? ? 'active' : ''}
       %a.disabled{:href=>'#', :style=>'color: #bfbfbf; cursor: default'} Zadania
+    %li{:class => is_version_confirment_tab_active? ? 'active' : ''}
+      = link_to 'Zatwierdzanie etapów', versions_project_path(@project)
 %br

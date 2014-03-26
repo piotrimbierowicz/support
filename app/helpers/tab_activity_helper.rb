@@ -11,6 +11,12 @@ module TabActivityHelper
     false
   end
 
+  def is_version_confirment_tab_active?
+    return true if params[:controller] == 'versions'
+    return true if params[:controller] == 'manual_tests'
+    false
+  end
+
   def is_project_tab_active?
     return true if params[:controller] == 'projects' and params[:action] == 'show'
     false

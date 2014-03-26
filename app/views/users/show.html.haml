@@ -24,5 +24,14 @@
                         = f.radio_button :role, role
                         = role
               .form-group
+                = f.label :projects, :class => 'control-label col-sm-4'
+                = hidden_field_tag 'user[project_ids][]', nil
+                .col-sm-8
+                  - for project in Project.order('name')
+                    .checkbox
+                      %label
+                        = check_box_tag 'user[project_ids][]', project.id, current_user.project_ids.include?(project.id)
+                        = project.name
+              .form-group
                 .col-sm-8.col-sm-offset-4
                   = f.submit 'Zapisz', :class => 'btn btn-success'

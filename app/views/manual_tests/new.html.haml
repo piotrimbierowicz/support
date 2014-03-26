@@ -1,0 +1,5 @@
+.container
+  = render :partial => 'projects/common/head'
+  = render :partial => 'layouts/notifications'
+  %h2= "#{@version.name} / Dodaj nowy test"
+  = render :partial => 'manual_tests/new/form', :locals => {manual_test: @manual_test}

@@ -1,0 +1,17 @@
+.container
+  = render :partial => 'projects/common/head'
+  = render :partial => 'layouts/notifications'
+
+  %h3= @version.name
+  - if [User::Customer, User::Administrator].include?(current_user.role)
+    %p
+      = link_to 'Dodaj nowy test akceptacyjny', new_manual_test_version_path(@version), :class => 'btn btn-success'
+
+  %table.datatable
+    %thead
+      %tr
+        %th Nazwa
+    %tbody
+      - for manual_test in @version.manual_tests
+        %tr
+          %td= link_to manual_test.name, manual_test_path(manual_test)

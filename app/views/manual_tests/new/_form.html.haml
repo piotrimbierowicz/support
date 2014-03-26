@@ -1,0 +1,12 @@
+= form_for manual_test, :url => manual_test.new_record? ? new_manual_test_version_path(@version) : manual_test_path(manual_test) do |f|
+  .form-group
+    = f.label :name, :class => 'control-label'
+    = f.text_field :name, :class => 'form-control'
+  .form-group
+    = f.label :content, :class => 'control-label'
+    = f.cktext_area :content, :class => 'form-control'
+  .form-group
+    - if manual_test.new_record? or manual_test.test_status == ManualTest::New
+      = f.submit 'Zapisz', :class => 'btn btn-success'
+    - else
+      %button.btn.btn-success{:disabled=>'disabled'} Edycja zablokowana

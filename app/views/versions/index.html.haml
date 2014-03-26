@@ -1,0 +1,24 @@
+.container
+  = render :partial => 'projects/common/head'
+  = render :partial => 'layouts/notifications'
+
+  %table.table
+    %thead
+      %tr
+        %th Nazwa etapu
+        %th Liczba testów
+        %th Testy zaliczone
+        %th Testy zatwierdzone
+        %th Testy do zatwierdzenia
+    %tbody
+      - for version in @versions
+        %tr
+          %td= link_to version.name, version_path(version)
+          %td= version.manual_tests.size
+          %td= "#{version.passed_tests_percent}%"
+          %td= "#{version.verified_tests_percent}%"
+          %td= "#{version.new_tests_percent}%"
+
+  - if [User::Administrator, User::Developer].include?(current_user.role)
+    %p
+      = link_to 'Dodaj nowy etap', new_version_project_path(@project), :class => 'btn btn-success'

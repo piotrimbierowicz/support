@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_admin, :except => [:index, :show, :questions]
 
   def show
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
   def new
@@ -14,6 +14,8 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     if @project.save
       flash[:notice] = 'Projekt utworzony pomyslnie!'
+      current_user.project_ids << @project.id
+      current_user.save!
       redirect_to project_path @project
     else
       flash[:alert] = 'Wystapil blad.'
@@ -31,11 +33,11 @@ class ProjectsController < ApplicationController
   end
 
   def questions
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
   end
 
   def new_question
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     @question = @project.questions.new
   end
 end

@@ -1,0 +1,16 @@
+.container
+  = render :partial => 'projects/common/head'
+  = render :partial => 'layouts/notifications'
+  .row
+    .col-sm-6
+      %h2= "#{@version.name} / Edycja testu"
+    .col-sm-6.text-right
+      - if @manual_test.test_status == ManualTest::New
+        = link_to 'Wyślij test do weryfikacji merytorycznej', manual_test_submit_path(@manual_test), :class => 'btn btn-primary'
+      - if @manual_test.test_status == ManualTest::UnderVerification
+        - if current_user.role == User::Customer
+          %button.btn.btn-primary{:disabled=>'disabled'} Test zgłoszony do weryfikacji
+        - if [User::Developer, User::Administrator].include?(current_user.role)
+          = link_to 'Zatwiedź poprawność merytoryczną', manual_test_verify_path(@manual_test), :class => 'btn btn-success'
+          = link_to 'Odrzuć', manual_test_deny_path(@manual_test), :class => 'btn btn-danger'
+  = render :partial => 'manual_tests/new/form', :locals => {manual_test: @manual_test}

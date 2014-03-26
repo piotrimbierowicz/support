@@ -1,0 +1,5 @@
+.container
+  = render :partial => 'projects/common/head'
+  = render :partial => 'layouts/notifications'
+  %h2 Dodaj nową wersję
+  = render :partial => 'versions/new/form', :locals => {version: @version}
